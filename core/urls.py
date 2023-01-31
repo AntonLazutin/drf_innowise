@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
+
+
+#"refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NTI3MDE1NywiaWF0IjoxNjc1MTgzNzU3LCJqdGkiOiI5MmExZmM3OTc2YTA0ODA1YjRiMTg0MTRjODJmZjdlNyIsInVzZXJfaWQiOjF9.Z3duflZZw06IEsnmm0sWHHGF4oBGFKS0_t_nzqVkF00",
+#"access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1MTg0MDU3LCJpYXQiOjE2NzUxODM3NTcsImp0aSI6ImM2NTdjM2ZmYTBiYzQ3N2E4MjU1ZjU2ZjQ2YzNlYzZjIiwidXNlcl9pZCI6MX0.5Gyi1xCTzjBCWLrEc-9ecSxpaTwtOfhrjH5NMlJVNys"
