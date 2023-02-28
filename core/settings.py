@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #local
     'tickets',
+    'answers',
+    'support',
     #3rd party
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-    'support',
-
 ]
 
 
@@ -141,3 +142,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3NTcyNjEwLCJpYXQiOjE2Nzc1NzIzMTAsImp0aSI6ImMxMjBkYzVhZjkyODQyYjU4Zjc2MjcwM2I1OGJlNWY4IiwidXNlcl9pZCI6MX0.1ECOeMO0A71cOBEHdmZygND6nBiwzEot1_Y-IeoK4Xc",
+# "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NzY1ODcxMCwiaWF0IjoxNjc3NTcyMzEwLCJqdGkiOiI5ZWFkMTAxYjExN2U0ZDg4OGRkNjU5ZTdkYTU1ZDg0ZCIsInVzZXJfaWQiOjF9._QWY10dzptAfyDkBIw735E9qQ9jVjBdBi8tc6UzFyBg"
