@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Answer(models.Model):
+    parent_ticket = models.ForeignKey('tickets.Ticket', related_name='answers', on_delete=models.CASCADE)
     parent_answer = models.ForeignKey('self', related_name='answers', on_delete=models.CASCADE, default=None)
     author = models.ForeignKey(User, related_name='answers', on_delete=models.CASCADE)
     text = models.CharField(max_length=150)

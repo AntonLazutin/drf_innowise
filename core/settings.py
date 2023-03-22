@@ -50,8 +50,20 @@ INSTALLED_APPS = [
 
 
 REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ),
+
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+
     'DEFAULT_AUTHENTICATION_CLASSES' : (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
 }
 
@@ -144,5 +156,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3NTcyNjEwLCJpYXQiOjE2Nzc1NzIzMTAsImp0aSI6ImMxMjBkYzVhZjkyODQyYjU4Zjc2MjcwM2I1OGJlNWY4IiwidXNlcl9pZCI6MX0.1ECOeMO0A71cOBEHdmZygND6nBiwzEot1_Y-IeoK4Xc",
-# "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NzY1ODcxMCwiaWF0IjoxNjc3NTcyMzEwLCJqdGkiOiI5ZWFkMTAxYjExN2U0ZDg4OGRkNjU5ZTdkYTU1ZDg0ZCIsInVzZXJfaWQiOjF9._QWY10dzptAfyDkBIw735E9qQ9jVjBdBi8tc6UzFyBg"
+#  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3OTU4NzAxOSwiaWF0IjoxNjc5NTAwNjE5LCJqdGkiOiIyNzliN2FlYTk5ZGY0MzQ5YTc5N2ViNGJiZWU5MmUyYSIsInVzZXJfaWQiOjF9.UDPC-GVR4WSd7yMkUP47xGJTXYQdfBqtJjDGsG7bt0w",
+#     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NTAwOTE5LCJpYXQiOjE2Nzk1MDA2MTksImp0aSI6ImRlMzY4ZjJhYjFlOTQwYjFhZWJmNjczMzliZTRiYzBlIiwidXNlcl9pZCI6MX0.S61jfqn0N6I7gT6mJYUKDru8QB_1XClHr-8t53SaZTw"

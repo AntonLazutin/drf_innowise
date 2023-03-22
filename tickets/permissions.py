@@ -1,14 +1,10 @@
-from rest_framework.permissions import BasePermission, SAFE_METHODS
+from rest_framework.permissions import (BasePermission, 
+                                        SAFE_METHODS)
 from rest_framework.exceptions import PermissionDenied
 
 
-class OwnerPermission(BasePermission):
+class OwnerOrReadOnly(BasePermission):
     message = "Unrestricted access!"
-
-    def has_permission(self, request, view):
-        if request.user.is_authenticated:
-            return True
-        return False
 
     def has_object_permission(self, request, view, obj):
 
