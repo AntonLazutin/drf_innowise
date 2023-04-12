@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
-from rest_framework.serializers import ModelSerializer
 from rest_framework import serializers
-from .models import Ticket
+from rest_framework.serializers import ModelSerializer
 
+from .models import Ticket
 
 
 class TicketSerializer(ModelSerializer):

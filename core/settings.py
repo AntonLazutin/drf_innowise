@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-zzijic6w+8(2-cnn(sq+xq%&wpa0v*j)d85p^kwt=7q%kbwgq4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'debug_toolbar',
 ]
 
 
@@ -69,6 +70,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,7 +110,7 @@ DATABASES = {
         'NAME': 'testdb',
         'USER': 'postgres',
         'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost', #change to db when running $ docker compose up
         'PORT': '5432',
     }
 }
@@ -148,7 +150,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -156,5 +158,20 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3OTU4NzAxOSwiaWF0IjoxNjc5NTAwNjE5LCJqdGkiOiIyNzliN2FlYTk5ZGY0MzQ5YTc5N2ViNGJiZWU5MmUyYSIsInVzZXJfaWQiOjF9.UDPC-GVR4WSd7yMkUP47xGJTXYQdfBqtJjDGsG7bt0w",
-#     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc5NTAwOTE5LCJpYXQiOjE2Nzk1MDA2MTksImp0aSI6ImRlMzY4ZjJhYjFlOTQwYjFhZWJmNjczMzliZTRiYzBlIiwidXNlcl9pZCI6MX0.S61jfqn0N6I7gT6mJYUKDru8QB_1XClHr-8t53SaZTw"
+INTERNAL_IPS = [
+    '127.0.0.1:8000', 'localhost:8000', 'localhost', '127.0.0.1'
+]
+
+# "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MDYwMjAwOSwiaWF0IjoxNjgwNTE1NjA5LCJqdGkiOiJiZGVhNWY5OTM3ZGM0YzNjOTYxNmQ2NDc3Y2U3NmJlOSIsInVzZXJfaWQiOjF9.MclxVD7P89jEdkYcJb6AQ-4SyDa6GqfjwLgKOLqjlKE",
+#   "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNTE1OTA5LCJpYXQiOjE2ODA1MTU2MDksImp0aSI6IjdkMWY4YjYwZThhMjQyNDE4MjBhMjgyNTZiYzUzZDc4IiwidXNlcl9pZCI6MX0.2JQtyX0I2M-lFveVJUaVu-zXP7TpTN4LNZe8TCEXMj8"
+
+import mimetypes
+mimetypes.add_type("application/javascript", ".js", True)
+
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+]
