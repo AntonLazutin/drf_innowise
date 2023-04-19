@@ -7,7 +7,11 @@ class TicketSupportSerializer(ModelSerializer):
     """
     Serializer of Ticket model for staff user
     # """
-    # author = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    status = serializers.ChoiceField(choices=(
+        ('PE', 'Pending'),
+        ('FR', 'Frozen'),
+        ('RE', 'Resolved'),
+    ))
 
     class Meta:
         model = 'tickets.Ticket'

@@ -9,9 +9,11 @@ services:
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=admin"
       - "POSTGRES_DB=testdb"
+      - "POSTGRES_HOST=db"
 
     ports:
       - "5432:5432"
+      
   web:
     build: .
     ports:

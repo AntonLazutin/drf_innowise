@@ -1,14 +1,14 @@
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Ticket
-from .permissions import OwnerOrReadOnly
+from .permissions import OwnerOrReadOnly, IsSupport
 from .serializers import TicketSerializer
 #from ..support.serializers import TicketSupportSerializer
 
 class TicketUserViewSet(ModelViewSet):
     queryset = Ticket.objects.all()
     serializer_class = TicketSerializer
-    permission_classes = (OwnerOrReadOnly,)
+    permission_classes = (OwnerOrReadOnly, IsSupport)
 
     # def get_serializer_class(self):
 
